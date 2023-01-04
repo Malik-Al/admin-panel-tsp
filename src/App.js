@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom"
-import Partners from "./page/Partners";
+import Partners from "./component/Partner/PartnersList";
 import Card from "./page/Card";
-import PartnersDetails from "./component/PartnerDetails";
+import PartnersDetails from "./component/Partner/PartnerDetails";
 import React from 'react';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Partners/>}/>
       <Route path='/card' element={<Card/>}/>
-      <Route path='/detailed' element={<PartnersDetails/>}/>
+      <Route path='/details' element={<PartnersDetails/>}/>
     </Routes>
   );
 }

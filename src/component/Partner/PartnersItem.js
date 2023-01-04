@@ -2,16 +2,24 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import PartnersDetails from './PartnerDetails';
+import {useNavigate} from 'react-router-dom'
+import Images from '../Images';
+
 
 function PartnerItem({partner}) {
+  let navigate = useNavigate()
+
+  function handleGetIdPartnerClick(url){
+    navigate({
+        pathname: url,
+        search: partner.partner_id
+    })
+}
+
+
   return ( <>
     <Card style={{ width: '18rem'}}>
-      <Card.Img 
-          variant="top" 
-          src={partner.partner_logo} 
-          style={{ width: '286px', height: '286px', objectFit: 'contain' }}
-        />
+      <Images img={partner.partner_logo}/>
       <Card.Body>
         <Card.Title>Partner_name: {partner.partner_name['ru-RU']}</Card.Title>
         <Card.Text><strong>Discount:</strong> {partner.discount}</Card.Text>
@@ -20,7 +28,7 @@ function PartnerItem({partner}) {
         <Card.Text><strong>End_date:</strong> {partner.end_date}</Card.Text>
       </Card.Body>
         <ButtonGroup  style={{padding: '2%'}}>
-          <Button variant="info" onClick={() => <PartnersDetails patrner_id={partner.partner_id}/> }>Детальный просмотр</Button>
+          <Button variant="info" onClick={() => handleGetIdPartnerClick('details') }>Детальный просмотр</Button>
         </ButtonGroup>
     </Card>
   </>

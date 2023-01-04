@@ -1,6 +1,6 @@
 import React from 'react';
-import RightNavigation from './RightNavigation';
-import PartnerItem from '../component/PartnersItem';
+import RightNavigation from '../../page/RightNavigation';
+import PartnerItem from './PartnersItem';
 import {useState, useEffect} from 'react';
 import axios from 'axios'
 
@@ -8,7 +8,7 @@ function Partners (){
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8029/api/partner')
+        axios.get('http://localhost:8029/api/partners')
         .then(res => {
             const response = res.data.data
             setData(response)
