@@ -20,19 +20,16 @@ function Partners (){
       return (<>
             <RightNavigation>
                 <h1 style={{padding:'2%'}}>Партнеры</h1>
-                <div style={{
-                        display: 'flex', 
-                        flexWrap: 'wrap',
-                    }}>
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
                     { 
-                        data.map(per => 
-                            <PartnerItem key={per.partner_id} partner={per}/>
+                        data.map(person => 
+                            <PartnerItem key={person.partner_id} partner={person}/>
                         )
                     }
                 </div>
             </RightNavigation>
             </>
-            )
+     )
       
 } 
 

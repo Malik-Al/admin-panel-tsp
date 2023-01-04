@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import PartnersDetails from './PartnerDetails';
 
 function PartnerItem({partner}) {
   return ( <>
@@ -13,14 +14,13 @@ function PartnerItem({partner}) {
         />
       <Card.Body>
         <Card.Title>Partner_name: {partner.partner_name['ru-RU']}</Card.Title>
-        <Card.Text>Discount: {partner.discount}</Card.Text>
-        <Card.Text>Status: {partner.status}</Card.Text>
-        <Card.Text>Create_date: {partner.create_date}</Card.Text>
-        <Card.Text>End_date: {partner.end_date}</Card.Text>
+        <Card.Text><strong>Discount:</strong> {partner.discount}</Card.Text>
+        <Card.Text><strong>Status:</strong>  {partner.status ? 'Активный' : 'Неактивный'}</Card.Text>
+        <Card.Text><strong>Create_date:</strong> {partner.create_date}</Card.Text>
+        <Card.Text><strong>End_date:</strong> {partner.end_date}</Card.Text>
       </Card.Body>
-        <ButtonGroup className="mb-2" >
-          <Button variant="primary">Go somewhere</Button>
-          <Button variant="primary">Go somewhere</Button>
+        <ButtonGroup  style={{padding: '2%'}}>
+          <Button variant="info" onClick={() => <PartnersDetails patrner_id={partner.partner_id}/> }>Детальный просмотр</Button>
         </ButtonGroup>
     </Card>
   </>
