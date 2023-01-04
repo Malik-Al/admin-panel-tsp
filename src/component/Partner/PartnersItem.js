@@ -28,7 +28,7 @@ function PartnerItem({partner}) {
         <Card.Text><strong>End_date:</strong> {partner.end_date}</Card.Text>
       </Card.Body>
         <ButtonGroup  style={{padding: '2%'}}>
-          <Button variant="info" onClick={() => handleGetIdPartnerClick('details') }>Детальный просмотр</Button>
+          <Button variant="info" onClick={() => handleGetIdPartnerClick('partner/details') }>Детальный просмотр</Button>
         </ButtonGroup>
     </Card>
   </>

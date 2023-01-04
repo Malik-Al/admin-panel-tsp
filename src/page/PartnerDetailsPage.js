@@ -60,7 +60,6 @@ function PartnerDetailsPage({partner}) {
     </div>
         <div style={{display: 'flex', justifyContent: 'flex-end', padding: '2% 1% 2% 0'}}>
             <Button style={{margin:'5px', fontSize: '20px'}}variant="info">Изменить </Button>
-            <Button style={{margin:'5px', fontSize: '20px'}} variant="danger">Удалить </Button>
         </div>
     </>
 
