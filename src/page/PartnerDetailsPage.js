@@ -46,7 +46,7 @@ function PartnerDetailsPage({partner}) {
             <ListGroupDesctiption value={partner.partner_description}/>
 
             <Card.Subtitle style={{padding: '2% 0 0 0', fontSize:'20px'}}> 
-                Статтус партнера:  { partner.status ? 'Активный' : 'Неактивный'}
+                Статус партнера:  { partner.status ? 'Активный' : 'Неактивный'}
             </Card.Subtitle>
 
             <Card.Subtitle style={{padding: '1% 0 0 0', fontSize:'20px'}}> 

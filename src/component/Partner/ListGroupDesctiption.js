@@ -15,7 +15,7 @@ function ListGroupDesctiption({value}) {
             {value['ky-KG']}
         </ListGroup.Item>
         <ListGroup.Item style={{border: 'none', padding: '0 0 0 10px', fontWeight: '400'}}> 
-            <strong> English lang: </strong>  
+            <strong> English language: </strong>  
             {value['en-US']}
         </ListGroup.Item>
     </ListGroup>

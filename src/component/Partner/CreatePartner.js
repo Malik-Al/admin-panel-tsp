@@ -5,9 +5,14 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import FormInput from './FormInput';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios'
+import moment from 'moment/moment';
+import DatePicker from './Datepicker'
 
 
 function CreatePartner() {
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(new Date())
+
     const [nameRU, setNameRU] = useState('')
     const [nameKG, setNameKG] = useState('')    
     const [nameEN, setNameEN] = useState('')
@@ -37,7 +42,6 @@ function CreatePartner() {
     const [categoryId, setCategoryId] = useState('');
     const [cityId, setCityId] = useState('');
 
-
     useEffect(() => {
         axios.get('http://localhost:8029/api/category')
         .then(res => {
@@ -55,37 +59,72 @@ function CreatePartner() {
      
       }, []);
      
+    console.log('startDate', startDate);  
+    console.log('endDate', endDate);  
 
-    const createPartnersubmin = () => {
-        // const data = {
-        //     category_id: categoryId,
-        //     city_id: cityId
-        // }
+    const createPartnersubmin = (e) => {
+        const namePartner = {
+            'ru-RU': nameRU,
+            'ky-KG': nameKG,
+            'en-US': nameEN
+        }
+
+        const shortDescription = {
+            'ru-RU': shortDescriptionRu,
+            'ky-KG': shortDescriptionKg,
+            'en-US': shortDescriptionEn
+        }
+
+        const condition = {
+            'ru-RU': conditionRu,
+            'ky-KG': conditionKg,
+            'en-US': conditionEn
+        }
+        
+        const description = {
+            'ru-RU': detailedDescriptionRu,
+            'ky-KG': detailedDescriptionKg,
+            'en-US': detailedDescriptionEn
+        }
         
         const formData = new FormData()
         formData.append('category_id', categoryId)
-        // formData.append('partner_name', '')
+        formData.append('partner_name', JSON.stringify(namePartner))
         formData.append('city_id', cityId)
         formData.append('discount', discount)
-        // formData.append('partner_logo', '')
-        // formData.append('partner_backdrop', '')
-        // formData.append('partner_short_description', '')
-        // formData.append('partner_condition', '')
-        // formData.append('create_date', '')
-        // formData.append('end_date', '')
+        formData.append('partner_logo', imgLogo)
+        formData.append('partner_backdrop', imgBackdrop)
+        formData.append('partner_short_description', JSON.stringify(shortDescription))
+        formData.append('partner_condition', JSON.stringify(condition))
+        formData.append('partner_description', JSON.stringify(description))
+        formData.append('create_date', moment(startDate).format('YYYY-MM-DD HH-mm'))
+        formData.append('end_date', moment(endDate).format('YYYY-MM-DD HH-mm'))
 
-        // console.log('data', data);
-        console.log('formData', formData);
+
+        console.log('category_id: ', formData.get('category_id'));
+        console.log('partner_name: ', formData.get('partner_name'));
+        console.log('cityId: ', formData.get('city_id'));
+        console.log('discount: ', formData.get('discount'));
+        console.log('partner_logo: ', formData.get('partner_logo'));
+        console.log('partner_backdrop: ', formData.get('partner_backdrop'));
+        console.log('partner_short_description: ', formData.get('partner_short_description'));
+        console.log('partner_condition: ', formData.get('partner_condition'));
+        console.log('partner_description: ', formData.get('partner_description'));
+        console.log('create_date: ', formData.get('create_date'));
+        console.log('end_date: ', formData.get('end_date'));
+
+
+
     }  
 
 
     function imgLogoHandleChange(event){
-        console.log('imgLogoHandleChange', event.target.value);
+        // console.log('imgLogoHandleChange', event.target.value);
         setImgLogo(event.target.value)
     }
 
     function imgBackdropHandleChange(event){
-        console.log('imgBackdropHandleChange', event.target.value);
+        // console.log('imgBackdropHandleChange', event.target.value);
         setImgBackdrop(event.target.value)
     }
 
@@ -272,19 +311,36 @@ function CreatePartner() {
                                 style={{marginTop: '2%'}}
                                 as="textarea" rows={3}
                                 placeholder="Кыргызский язык"  
-                                onChange={handleChangeDescriptionEn}
+                                onChange={handleChangeDescriptionKg}
                             />
                             <Form.Control 
                                 style={{marginTop: '2%'}}
                                 as="textarea" rows={3}
-                                placeholder="English lang"  
-                                onChange={handleChangeDescriptionKg}
+                                placeholder="English language"  
+                                onChange={handleChangeDescriptionEn}
                             />                            
                         </Form.Group>
+
+
+                        <DatePicker 
+                            selectedValue={startDate} 
+                            onChange={e => setStartDate(e.target.value)} 
+                            nameDate={'Дата Создание'}
+                        />
+
+                        <DatePicker 
+                            selectedValue={endDate} 
+                            onChange={e => setEndDate(e.target.value)} 
+                            nameDate={'Дата окончания партнерства'}
+                            />
+
+
+
                         <Button 
-                        variant="success"
+                           style={{marginTop: '2%'}}
+                           variant="success"
                         // type='submit'
-                        onClick={createPartnersubmin}
+                            onClick={createPartnersubmin}
                         >Сохронить</Button>
                 </Form>
 

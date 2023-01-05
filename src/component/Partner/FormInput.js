@@ -19,7 +19,7 @@ function FormInput ({handlerRu, handlerKg, handlerEn, title}){
                 />
                 <Form.Control 
                     type="text" 
-                    placeholder="English lang" 
+                    placeholder="English language" 
                     onChange={handlerEn}
                 />
             </div>
