@@ -114,6 +114,18 @@ function CreatePartner() {
         console.log('end_date: ', formData.get('end_date'));
 
 
+        const headers ={
+            headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+        }
+
+        axios.post('http://localhost:8029/api/partner', formData, headers)
+        .then(res => {
+            const response = res.data.data
+            console.log('response',response)
+        })
+        .catch(error => error)
 
     }  
 
