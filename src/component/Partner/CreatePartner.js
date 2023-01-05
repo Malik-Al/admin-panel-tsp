@@ -3,7 +3,7 @@ import RightNavigation from '../../page/RightNavigation';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import FormInput from './FormInput';
-// import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 
 
@@ -11,6 +11,12 @@ function CreatePartner() {
     const [nameRU, setNameRU] = useState('')
     const [nameKG, setNameKG] = useState('')    
     const [nameEN, setNameEN] = useState('')
+
+    const [discount, setDiscount] = useState('')
+
+    const [imgLogo, setImgLogo] = useState('')
+    const [imgBackdrop, setImgBackdrop] = useState('')
+
 
     const [shortDescriptionRu, setShortDescriptionRu] = useState('')
     const [shortDescriptionKg, setShortDescriptionKg] = useState('')    
@@ -27,6 +33,10 @@ function CreatePartner() {
 
     const [category, setCategory] = useState([]);
     const [city, setCity] = useState([]);
+
+    const [categoryId, setCategoryId] = useState('');
+    const [cityId, setCityId] = useState('');
+
 
     useEffect(() => {
         axios.get('http://localhost:8029/api/category')
@@ -46,15 +56,53 @@ function CreatePartner() {
       }, []);
      
 
+    const createPartnersubmin = () => {
+        // const data = {
+        //     category_id: categoryId,
+        //     city_id: cityId
+        // }
+        
+        const formData = new FormData()
+        formData.append('category_id', categoryId)
+        // formData.append('partner_name', '')
+        formData.append('city_id', cityId)
+        formData.append('discount', discount)
+        // formData.append('partner_logo', '')
+        // formData.append('partner_backdrop', '')
+        // formData.append('partner_short_description', '')
+        // formData.append('partner_condition', '')
+        // formData.append('create_date', '')
+        // formData.append('end_date', '')
+
+        // console.log('data', data);
+        console.log('formData', formData);
+    }  
+
+
+    function imgLogoHandleChange(event){
+        console.log('imgLogoHandleChange', event.target.value);
+        setImgLogo(event.target.value)
+    }
+
+    function imgBackdropHandleChange(event){
+        console.log('imgBackdropHandleChange', event.target.value);
+        setImgBackdrop(event.target.value)
+    }
+
+
+    function discountHandleChange(event){
+        setDiscount(event.target.value)
+    }
+
     function categoryHandleChange(event) {
         if(event.target.value.length > 16){
-            console.log('event.target.value', event.target.value);
+            setCategoryId(event.target.value)
         }
     }
 
     function cityHandleChange(event) {
         if(event.target.value.length > 14){
-            console.log('event.target.value', event.target.value);
+            setCityId(event.target.value)
         }
     }
 
@@ -177,17 +225,24 @@ function CreatePartner() {
                         <Form.Label style={{fontWeight: 'bold' , paddingTop: '2%'}}> Скидка парнера </Form.Label>
                         <Form.Control 
                                 type="text" 
-                                placeholder="Скидка" 
+                                placeholder="Скидка"
+                                onChange={discountHandleChange} 
                             />
 
                         <Form.Group controlId="formFile" className="mb-3">
                             <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Выберите картинку для логотипа</Form.Label>
-                            <Form.Control type="file" />
+                            <Form.Control 
+                                type="file" 
+                                onChange={imgLogoHandleChange}
+                            />
                         </Form.Group>    
 
                         <Form.Group controlId="formFile" className="mb-3">
                             <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Выберите картинку для заднего фона</Form.Label>
-                            <Form.Control type="file" />
+                            <Form.Control 
+                                type="file" 
+                                onChange={imgBackdropHandleChange}
+                            />
                         </Form.Group>    
 
 
@@ -226,15 +281,11 @@ function CreatePartner() {
                                 onChange={handleChangeDescriptionKg}
                             />                            
                         </Form.Group>
-
-
-                        <Form.Label style={{fontWeight: 'bold' , paddingTop: '2%'}}> Дата создания </Form.Label>
-                        <Form.Control 
-                                type="text" 
-                                placeholder="дата" 
-                            />
-
-
+                        <Button 
+                        variant="success"
+                        // type='submit'
+                        onClick={createPartnersubmin}
+                        >Сохронить</Button>
                 </Form>
 
                 </div>
