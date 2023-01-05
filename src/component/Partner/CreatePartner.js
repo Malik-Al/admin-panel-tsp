@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import RightNavigation from '../../page/RightNavigation';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import FormInput from './FormInput';
 // import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 
@@ -10,6 +11,19 @@ function CreatePartner() {
     const [nameRU, setNameRU] = useState('')
     const [nameKG, setNameKG] = useState('')    
     const [nameEN, setNameEN] = useState('')
+
+    const [shortDescriptionRu, setShortDescriptionRu] = useState('')
+    const [shortDescriptionKg, setShortDescriptionKg] = useState('')    
+    const [shortDescriptionEn, setShortDescriptionEn] = useState('')
+
+    const [conditionRu, setConditionRu] = useState('')
+    const [conditionKg, setConditionKg] = useState('')
+    const [conditionEn, setConditionEn] = useState('')
+
+    const [ detailedDescriptionRu, setDetailedDescriptionRu] = useState('')
+    const [ detailedDescriptionKg, setDetailedDescriptionKg] = useState('')
+    const [ detailedDescriptionEn, setDetailedDescriptionEn] = useState('')
+   
 
     const [category, setCategory] = useState([]);
     const [city, setCity] = useState([]);
@@ -33,33 +47,66 @@ function CreatePartner() {
      
 
     function categoryHandleChange(event) {
-        event.preventDefault();
         if(event.target.value.length > 16){
             console.log('event.target.value', event.target.value);
         }
     }
 
     function cityHandleChange(event) {
-        event.preventDefault();
         if(event.target.value.length > 14){
             console.log('event.target.value', event.target.value);
         }
     }
 
     function handleChangeRu(event) {
-        event.preventDefault();
         setNameRU(event.target.value);
     }
 
     function handleChangeKg(event) {
-        event.preventDefault();
         setNameKG(event.target.value);
     }
 
     function handleChangeEn(event) {
-        event.preventDefault();
         setNameEN(event.target.value);
     }
+
+    function handleChangeShortDescriptionRu(event) {
+        setShortDescriptionRu(event.target.value);
+    }
+
+    function handleChangeShortDescriptionKg(event) {
+        setShortDescriptionKg(event.target.value);
+    }
+
+    function handleChangeShortDescriptionEn(event) {
+        setShortDescriptionEn(event.target.value);
+    }
+
+
+    function handleChangeConditionEn(event) {
+        setConditionEn(event.target.value);
+    }
+
+    function handleChangeConditionRu(event) {
+        setConditionRu(event.target.value);
+    }
+
+    function handleChangeConditionKg(event) {
+        setConditionKg(event.target.value);
+    }
+
+
+    function handleChangeDescriptionEn(event) {
+        setDetailedDescriptionEn(event.target.value);
+    }
+    function handleChangeDescriptionRu(event) {
+        setDetailedDescriptionRu(event.target.value);
+    }
+    function handleChangeDescriptionKg(event) {
+        setDetailedDescriptionKg(event.target.value);
+    }
+
+
 
 
   return ( 
@@ -73,7 +120,11 @@ function CreatePartner() {
                     borderRadius: '3px'
                 }}>
                 <Form >
-                        <Form.Label> Категория </Form.Label>
+                        <Form.Label
+                        style={{
+                            fontWeight: 'bold'
+                        }}
+                        > Категория </Form.Label>
                         <FloatingLabel controlId="floatingSelect" >
                             <Form.Select 
                                 aria-label="Floating label select example" 
@@ -95,7 +146,7 @@ function CreatePartner() {
                         </FloatingLabel>
 
 
-                        <Form.Label> Город </Form.Label>
+                        <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}> Город </Form.Label>
                         <FloatingLabel controlId="floatingSelect" >
                             <Form.Select 
                                 aria-label="Floating label select example" 
@@ -116,58 +167,74 @@ function CreatePartner() {
                             </Form.Select>
                         </FloatingLabel>
 
+                         <FormInput 
+                            handlerRu={handleChangeRu} 
+                            handlerEn={handleChangeEn}
+                            handlerKg={handleChangeKg}
+                            title={'Название парнера'}
+                         />           
 
-                        <Form.Label> Название парнера </Form.Label>
-                        <div style={{display: 'flex' }}>
-                            <Form.Control 
-                                type="text" 
-                                placeholder="Русский язык" 
-                                onChange={handleChangeRu}
-                            />
-                            <Form.Control 
-                                type="text" 
-                                placeholder="Кыргызский язык" 
-                                onChange={handleChangeKg}
-                            />
-                            <Form.Control 
-                                type="text" 
-                                placeholder="English lang" 
-                                onChange={handleChangeEn}
-                            />
-                        </div>
-
-                        <Form.Label> Скидка парнера </Form.Label>
+                        <Form.Label style={{fontWeight: 'bold' , paddingTop: '2%'}}> Скидка парнера </Form.Label>
                         <Form.Control 
                                 type="text" 
                                 placeholder="Скидка" 
                             />
 
                         <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label>Выберите картинку для логотипа</Form.Label>
+                            <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Выберите картинку для логотипа</Form.Label>
                             <Form.Control type="file" />
                         </Form.Group>    
 
                         <Form.Group controlId="formFile" className="mb-3">
-                            <Form.Label>Выберите картинку для заднего фона</Form.Label>
+                            <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Выберите картинку для заднего фона</Form.Label>
                             <Form.Control type="file" />
                         </Form.Group>    
 
 
-                        <Form.Label> Краткое описание </Form.Label>
-                        <div style={{display: 'flex' }}>
+                        <FormInput 
+                            handlerRu={handleChangeShortDescriptionRu} 
+                            handlerEn={handleChangeShortDescriptionEn}
+                            handlerKg={handleChangeShortDescriptionKg}
+                            title={'Краткое описание'}
+                         /> 
+
+                        <FormInput 
+                            handlerRu={handleChangeConditionRu} 
+                            handlerEn={handleChangeConditionEn}
+                            handlerKg={handleChangeConditionKg}
+                            title={'Условие партнера'}
+                         /> 
+
+                        <Form.Group className="mb-3" >
+                            <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Подробное описание</Form.Label>
                             <Form.Control 
-                                type="text" 
-                                placeholder="Русский язык" 
+                                style={{marginTop: '2%'}}
+                                as="textarea" rows={3}
+                                placeholder="Русский язык"  
+                                onChange={handleChangeDescriptionRu}
                             />
                             <Form.Control 
-                                type="text" 
-                                placeholder="Кыргызский язык" 
+                                style={{marginTop: '2%'}}
+                                as="textarea" rows={3}
+                                placeholder="Кыргызский язык"  
+                                onChange={handleChangeDescriptionEn}
                             />
                             <Form.Control 
+                                style={{marginTop: '2%'}}
+                                as="textarea" rows={3}
+                                placeholder="English lang"  
+                                onChange={handleChangeDescriptionKg}
+                            />                            
+                        </Form.Group>
+
+
+                        <Form.Label style={{fontWeight: 'bold' , paddingTop: '2%'}}> Дата создания </Form.Label>
+                        <Form.Control 
                                 type="text" 
-                                placeholder="English lang" 
+                                placeholder="дата" 
                             />
-                        </div>
+
+
                 </Form>
 
                 </div>
