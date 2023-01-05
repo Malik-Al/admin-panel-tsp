@@ -12,9 +12,10 @@ function Datepicker ({selectedValue, onChange, nameDate}) {
                     <Form.Control 
                             type="date" 
                             name="doj" 
-                            defaultValue={selectedValue} 
                             placeholder="Date of Joining" 
-                            onChange={(e) => onChange(e)} />
+                            defaultValue={selectedValue} 
+                            onChange={(e) => onChange(e)} 
+                            />
                 </Form.Group>
             </div>
         </div>

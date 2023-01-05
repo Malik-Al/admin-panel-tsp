@@ -7,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 import moment from 'moment/moment';
 import DatePicker from './Datepicker'
+import TimePickers from './TimePickers';
 
 
 function CreatePartner() {
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
+    const [dateTime, setDateTime] = useState(null)
 
     const [nameRU, setNameRU] = useState('')
     const [nameKG, setNameKG] = useState('')    
@@ -58,10 +60,8 @@ function CreatePartner() {
         .catch(error => error)
      
       }, []);
-     
-    console.log('startDate', startDate);  
-    console.log('endDate', endDate);  
 
+    
     const createPartnersubmin = (e) => {
         const namePartner = {
             'ru-RU': nameRU,
@@ -97,8 +97,8 @@ function CreatePartner() {
         formData.append('partner_short_description', JSON.stringify(shortDescription))
         formData.append('partner_condition', JSON.stringify(condition))
         formData.append('partner_description', JSON.stringify(description))
-        formData.append('create_date', moment(startDate).format('YYYY-MM-DD HH-mm'))
-        formData.append('end_date', moment(endDate).format('YYYY-MM-DD HH-mm'))
+        formData.append('create_date', moment(startDate).format('YYYY-MM-DD'))
+        formData.append('end_date', `${moment(endDate).format('YYYY-MM-DD')} ${dateTime}`)
 
 
         console.log('category_id: ', formData.get('category_id'));
@@ -334,7 +334,13 @@ function CreatePartner() {
                             nameDate={'Дата окончания партнерства'}
                             />
 
+                        <Form.Label 
+                            style={{paddingTop: '2%'}}
+                            >Время окончания партнерства
+                        </Form.Label>
 
+                        <TimePickers onChange={e => setDateTime(e.target.value)}/>  
+ 
 
                         <Button 
                            style={{marginTop: '2%'}}
