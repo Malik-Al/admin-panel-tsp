@@ -11,16 +11,19 @@ function FormInput ({handlerRu, handlerKg, handlerEn, title}){
                     type="text" 
                     placeholder="Русский язык" 
                     onChange={handlerRu}
+                    required
                 />
                 <Form.Control 
                     type="text" 
                     placeholder="Кыргызский язык" 
                     onChange={handlerKg}
+                    required
                 />
                 <Form.Control 
                     type="text" 
                     placeholder="English language" 
                     onChange={handlerEn}
+                    required
                 />
             </div>
         </>

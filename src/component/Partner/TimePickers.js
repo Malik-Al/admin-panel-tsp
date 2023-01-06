@@ -25,7 +25,8 @@ export default function TimePickers({onChange}) {
         type="time"
         defaultValue="00:00"
         className={classes.textField}
-        onChange={(e) => onChange(e)} 
+        onChange={(e) => onChange(e)}
+        required 
         InputLabelProps={{
           shrink: true,
         }}

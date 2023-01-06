@@ -131,13 +131,13 @@ function CreatePartner() {
 
 
     function imgLogoHandleChange(event){
-        // console.log('imgLogoHandleChange', event.target.value);
-        setImgLogo(event.target.value)
+        console.log('imgLogoHandleChange', event.target.files[0]);
+        setImgLogo(event.target.files[0])
     }
 
     function imgBackdropHandleChange(event){
-        // console.log('imgBackdropHandleChange', event.target.value);
-        setImgBackdrop(event.target.value)
+        console.log('imgBackdropHandleChange', event.target.files[0]);
+        setImgBackdrop(event.target.files[0])
     }
 
 
@@ -229,13 +229,15 @@ function CreatePartner() {
                                 aria-label="Floating label select example" 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={categoryHandleChange}
-                                    >
+                                required
+                                >
                                        <option>Выберите категорию</option>
                                 { 
                                     category.map(person => 
                                         <option 
                                             value={person.category_id}
                                             key={person.category_id}
+                                            required
                                         >
                                             {person.category_name['ru-RU']}
                                         </option>
@@ -251,11 +253,13 @@ function CreatePartner() {
                                 aria-label="Floating label select example" 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={cityHandleChange}
-                                    >
+                                required
+                                >
                                        <option>Выберите город</option>
                                 { 
                                     city.map(person => 
                                         <option 
+                                            required
                                             value={person.city_id}
                                             key={person.city_id}
                                         >
@@ -278,6 +282,7 @@ function CreatePartner() {
                                 type="text" 
                                 placeholder="Скидка"
                                 onChange={discountHandleChange} 
+                                required
                             />
 
                         <Form.Group controlId="formFile" className="mb-3">
@@ -285,6 +290,7 @@ function CreatePartner() {
                             <Form.Control 
                                 type="file" 
                                 onChange={imgLogoHandleChange}
+                                required
                             />
                         </Form.Group>    
 
@@ -293,6 +299,7 @@ function CreatePartner() {
                             <Form.Control 
                                 type="file" 
                                 onChange={imgBackdropHandleChange}
+                                required
                             />
                         </Form.Group>    
 
@@ -315,21 +322,30 @@ function CreatePartner() {
                             <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}>Подробное описание</Form.Label>
                             <Form.Control 
                                 style={{marginTop: '2%'}}
-                                as="textarea" rows={3}
+                                as="textarea" 
+                                rows={3}
                                 placeholder="Русский язык"  
                                 onChange={handleChangeDescriptionRu}
+                                required
+
                             />
                             <Form.Control 
                                 style={{marginTop: '2%'}}
-                                as="textarea" rows={3}
+                                as="textarea" 
+                                rows={3}
                                 placeholder="Кыргызский язык"  
                                 onChange={handleChangeDescriptionKg}
+                                required
+
                             />
                             <Form.Control 
                                 style={{marginTop: '2%'}}
-                                as="textarea" rows={3}
+                                as="textarea" 
+                                rows={3}
                                 placeholder="English language"  
                                 onChange={handleChangeDescriptionEn}
+                                required
+
                             />                            
                         </Form.Group>
 
@@ -357,7 +373,7 @@ function CreatePartner() {
                         <Button 
                            style={{marginTop: '2%'}}
                            variant="success"
-                        // type='submit'
+                            type='submit'
                             onClick={createPartnersubmin}
                         >Сохронить</Button>
                 </Form>

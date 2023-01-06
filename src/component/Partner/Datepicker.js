@@ -15,6 +15,7 @@ function Datepicker ({selectedValue, onChange, nameDate}) {
                             placeholder="Date of Joining" 
                             defaultValue={selectedValue} 
                             onChange={(e) => onChange(e)} 
+                            required={true}
                             />
                 </Form.Group>
             </div>
