@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
+import SpinnerComponent from '../SpinnerComponent';
 
 
 function Partners (){
@@ -32,11 +33,19 @@ function Partners (){
                     Добавить партнера 
                  </Button>
 
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                <div style={{ 
+                    display: 'flex', 
+                    flexWrap: 'wrap',
+                    // justifyContent: 'space-evenly'
+                    }}>
                     { 
+                        data.length 
+                        ?
                         data.map(person => 
                             <PartnerItem key={person.partner_id} partner={person}/>
                         )
+                        : 
+                        <SpinnerComponent/>
                     }
                 </div>
             </RightNavigation>

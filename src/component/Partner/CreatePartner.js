@@ -89,8 +89,8 @@ function CreatePartner() {
         
         const formData = new FormData()
         formData.append('category_id', categoryId)
-        formData.append('partner_name', JSON.stringify(namePartner))
         formData.append('city_id', cityId)
+        formData.append('partner_name', JSON.stringify(namePartner))
         formData.append('discount', discount)
         formData.append('partner_logo', imgLogo)
         formData.append('partner_backdrop', imgBackdrop)
@@ -101,17 +101,17 @@ function CreatePartner() {
         formData.append('end_date', `${moment(endDate).format('YYYY-MM-DD')} ${dateTime}`)
 
 
-        console.log('category_id: ', formData.get('category_id'));
-        console.log('partner_name: ', formData.get('partner_name'));
-        console.log('cityId: ', formData.get('city_id'));
-        console.log('discount: ', formData.get('discount'));
-        console.log('partner_logo: ', formData.get('partner_logo'));
-        console.log('partner_backdrop: ', formData.get('partner_backdrop'));
-        console.log('partner_short_description: ', formData.get('partner_short_description'));
-        console.log('partner_condition: ', formData.get('partner_condition'));
-        console.log('partner_description: ', formData.get('partner_description'));
-        console.log('create_date: ', formData.get('create_date'));
-        console.log('end_date: ', formData.get('end_date'));
+        // console.log('category_id: ', formData.get('category_id'));
+        // console.log('cityId: ', formData.get('city_id'));
+        // console.log('partner_name: ', formData.get('partner_name'));
+        // console.log('discount: ', formData.get('discount'));
+        // console.log('partner_logo: ', formData.get('partner_logo'));
+        // console.log('partner_backdrop: ', formData.get('partner_backdrop'));
+        // console.log('partner_short_description: ', formData.get('partner_short_description'));
+        // console.log('partner_condition: ', formData.get('partner_condition'));
+        // console.log('partner_description: ', formData.get('partner_description'));
+        // console.log('create_date: ', formData.get('create_date'));
+        // console.log('end_date: ', formData.get('end_date'));
 
 
         const headers ={
@@ -131,12 +131,10 @@ function CreatePartner() {
 
 
     function imgLogoHandleChange(event){
-        console.log('imgLogoHandleChange', event.target.files[0]);
         setImgLogo(event.target.files[0])
     }
 
     function imgBackdropHandleChange(event){
-        console.log('imgBackdropHandleChange', event.target.files[0]);
         setImgBackdrop(event.target.files[0])
     }
 
@@ -146,13 +144,13 @@ function CreatePartner() {
     }
 
     function categoryHandleChange(event) {
-        if(event.target.value.length > 16){
+        if(event.target.value.length > 20){
             setCategoryId(event.target.value)
         }
     }
 
     function cityHandleChange(event) {
-        if(event.target.value.length > 14){
+        if(event.target.value.length > 20){
             setCityId(event.target.value)
         }
     }
@@ -211,7 +209,7 @@ function CreatePartner() {
   return ( 
         <>
             <RightNavigation>
-                <h1>Create Partner</h1>
+                <h1 style={{textAlign: 'center'}}>Создание партнера</h1>
                 <div style={{ 
                     padding: '4%', 
                     margin: '3%', 
@@ -219,19 +217,14 @@ function CreatePartner() {
                     borderRadius: '3px'
                 }}>
                 <Form >
-                        <Form.Label
-                        style={{
-                            fontWeight: 'bold'
-                        }}
+                        <Form.Label style={{fontWeight: 'bold'}}
                         > Категория </Form.Label>
-                        <FloatingLabel controlId="floatingSelect" >
+                        <FloatingLabel controlId="floatingSelect">
                             <Form.Select 
-                                aria-label="Floating label select example" 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={categoryHandleChange}
-                                required
                                 >
-                                       <option>Выберите категорию</option>
+                                    <option>Выберите категорию</option>
                                 { 
                                     category.map(person => 
                                         <option 
@@ -250,18 +243,16 @@ function CreatePartner() {
                         <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}> Город </Form.Label>
                         <FloatingLabel controlId="floatingSelect" >
                             <Form.Select 
-                                aria-label="Floating label select example" 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={cityHandleChange}
-                                required
                                 >
                                        <option>Выберите город</option>
                                 { 
                                     city.map(person => 
                                         <option 
-                                            required
                                             value={person.city_id}
                                             key={person.city_id}
+                                            required
                                         >
                                             {person.city_name['ru-RU']}
                                         </option>

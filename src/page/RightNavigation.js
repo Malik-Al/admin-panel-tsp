@@ -14,7 +14,10 @@ function RightNavigation({children}) {
                  <Nav  >
                   <Container fluid>
                       <Nav.Link href="/">Home</Nav.Link>
-                      <Nav.Link href="/card"> Card</Nav.Link>
+                      <Nav.Link href="/card"> Карты</Nav.Link>
+                      <Nav.Link href="/category"> Категория</Nav.Link>
+                      <Nav.Link href="/city"> Города</Nav.Link>
+                      <Nav.Link href="/address"> Адреса Партнера</Nav.Link>
                   </Container>
                   </Nav>
               </Navbar>
