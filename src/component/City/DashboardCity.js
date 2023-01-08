@@ -5,14 +5,11 @@ import Nav from 'react-bootstrap/Nav';
 import config from '../../config.json'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-import CityPage from '../../page/CityPage';
-
 
 
 export default function DashboardCity({cityName}) {
   let navigate = useNavigate()
   const [city, setCity] = useState([])
-  const [cityId, setCityId] = useState('')
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -32,12 +29,10 @@ export default function DashboardCity({cityName}) {
 
   const handleClose = (e) => {
     setAnchorEl(null);
-    console.log('e.target.attributes.value.value', e.target.attributes.value.value);
-    // navigate({
-    //     pathname: e.target.attributes.value.value,
-    //     search: '/city'
-    // })
-    navigate('/city')
+    navigate({
+        pathname: '/city',
+        search: e.target.attributes.value.value 
+    })
     
   };
 
