@@ -35,19 +35,28 @@ function CreateCity (){
 
     return <>
     <RightNavigation>
-        <p>Create</p>
-        <FormInput 
-            handlerEn={(e) => setCityEn(e.target.value)} 
-            handlerKg={(e) => setCityKG(e.target.value)} 
-            handlerRu={(e) => setCityRu(e.target.value)} 
-            title={'Введите название города'} 
-        />
-        <Button 
-            style={{marginTop: '2%'}}
-            variant="success"
-            type='submit'
-            onClick={createCategorySubmit}
-        >Сохранить</Button> 
+    <h1 style={{textAlign: 'center'}}>Создание города</h1>
+        <div style={{ 
+                    padding: '4%', 
+                    margin: '3%', 
+                    border:'1px solid rgba(0,0,0,0.3)' , 
+                    borderRadius: '3px'
+                }}>
+
+            <FormInput 
+                handlerEn={(e) => setCityEn(e.target.value)} 
+                handlerKg={(e) => setCityKG(e.target.value)} 
+                handlerRu={(e) => setCityRu(e.target.value)} 
+                title={'Введите название города'} 
+            />
+            <Button 
+                style={{marginTop: '2%'}}
+                variant="success"
+                type='submit'
+                onClick={createCategorySubmit}
+            >Сохранить</Button> 
+
+        </div>
     </RightNavigation>
 
     </>

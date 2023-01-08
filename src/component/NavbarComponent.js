@@ -10,7 +10,7 @@ function NavbarComponent() {
       <Navbar bg="light" expand="lg" >
         <Container fluid>
             <Navbar.Brand href="/">TSP Partner</Navbar.Brand>
-            <Form className="d-flex">
+            <Form className="d-flex" >
                 <Form.Control
                   type="search"
                   placeholder="Search"
