@@ -7,6 +7,7 @@ import CategoryPage from "./page/CategoryPage";
 import CityPage from "./page/CityPage";
 import AddressPage from "./page/AddressPage";
 import CreateCategory from "./component/Category/CreateCategory";
+import CreateCity from "./component/City/CreateCity";
 import React from 'react';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path='/' element={<Partners/>}/>
       <Route path='/card' element={<CardPage/>}/>
       <Route path='/city' element={<CityPage/>}/>
+      <Route path='/city/create' element={<CreateCity/>}/>
       <Route path='/category' element={<CategoryPage/>}/>
       <Route path='/category/create' element={<CreateCategory/>}/>
       <Route path='/address' element={<AddressPage/>}/>

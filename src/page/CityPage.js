@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import RightNavigation from './RightNavigation';
 import config from '../config.json'
 import axios from 'axios'
-import {useLocation} from 'react-router-dom'
-
+import {useLocation, useNavigate} from 'react-router-dom'
+import DetailCity from '../component/City/DetailCity';
+import Button from '@mui/material/Button';
 
 function CityPage (){
+    let navigate = useNavigate()
     const {search} = useLocation();
     const [city, setCity] = useState([]);
     const city_id = search.slice(1)
-    console.log('CityPage city_id', city_id);
 
     useEffect(() => {
         axios.get(`${config.host.cityOne}?id=${city_id}`)
@@ -22,13 +23,17 @@ function CityPage (){
 
     return <>
     <RightNavigation>
-        <p>City</p>
+    <Button 
+        style={{margin:'5px', fontSize: '15px'}} 
+        variant="contained"
+        color="success"
+        onClick={() => navigate('/city/create')}
+    >
+        Добавить Город 
+        </Button>
         <div>{city.map(i => 
             <div key={i.city_id}>
-                <p>  {i.city_id}</p>
-                <p>  {i.city_name['ru-RU']}</p>
-                <p>  {i.city_name['ky-KG']}</p>
-                <p>  {i.city_name['en-US']}</p>
+                <DetailCity nameCity={i.city_name}/>
              </div>
         )}</div>
     </RightNavigation>

@@ -5,8 +5,8 @@ import FormInput from '../Partner/FormInput';
 import FormInputImg from './FormInputImg';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
 import config from '../../config.json'
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -19,7 +19,7 @@ function CreateCategory() {
     const [iosImg, setIosImg] = useState('')
     const [androidImg, setAndroidImg] = useState('')
 
-    const createCategorySubmin = () => {
+    const createCategorySubmit = () => {
         const nameCategory = {
             'ru-RU': categoruRu,
             'ky-KG': categoruKg,
@@ -72,7 +72,7 @@ function CreateCategory() {
                             style={{marginTop: '2%'}}
                             variant="success"
                             type='submit'
-                            onClick={createCategorySubmin}
+                            onClick={createCategorySubmit}
                         >Сохранить</Button>        
                 </Form>
 

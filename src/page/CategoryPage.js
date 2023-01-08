@@ -24,7 +24,6 @@ function CategoryPage (){
     return (
         <>
         <RightNavigation>
-            {/* <h1>Category</h1> */}
             <Button 
                     style={{margin:'5px', fontSize: '15px'}} 
                     variant="contained"
