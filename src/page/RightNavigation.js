@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavbarComponent from '../component/NavbarComponent';
+import DashboardCity from '../component/City/DashboardCity';
 
 function RightNavigation({children}) {
   return (
@@ -12,10 +13,12 @@ function RightNavigation({children}) {
           <Navbar >
                  <Nav  >
                   <Container fluid>
-                      <Nav.Link href="/">Home</Nav.Link>
+                      <Nav.Link href="/">Партнеры</Nav.Link>
                       <Nav.Link href="/card"> Карты</Nav.Link>
                       <Nav.Link href="/category"> Категория</Nav.Link>
-                      <Nav.Link href="/city"> Города</Nav.Link>
+                      {/* <Nav.Link> */}
+                        <DashboardCity cityName={'Города'}/>
+                        {/* </Nav.Link> */}
                       <Nav.Link href="/address"> Адреса Партнера</Nav.Link>
                   </Container>
                   </Nav>

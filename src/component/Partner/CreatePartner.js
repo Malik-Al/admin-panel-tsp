@@ -359,7 +359,7 @@ function CreatePartner() {
                            variant="success"
                             type='submit'
                             onClick={createPartnersubmin}
-                        >Сохронить</Button>
+                        >Сохранить</Button>
                 </Form>
 
                 </div>

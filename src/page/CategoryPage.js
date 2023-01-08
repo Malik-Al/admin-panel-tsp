@@ -20,7 +20,6 @@ function CategoryPage (){
         .catch(error => error)
       }, []);
 
-      console.log('category', category);
 
     return (
         <>

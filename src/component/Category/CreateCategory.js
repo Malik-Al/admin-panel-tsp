@@ -30,8 +30,6 @@ function CreateCategory() {
         formData.append('ios', iosImg)
         formData.append('android', androidImg)
 
-        console.log('formData', formData.get('ios'));
-
         const headers ={
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -46,7 +44,6 @@ function CreateCategory() {
         })
         .catch(error => error)
         
-    
     }  
     
 
@@ -76,7 +73,7 @@ function CreateCategory() {
                             variant="success"
                             type='submit'
                             onClick={createCategorySubmin}
-                        >Сохронить</Button>        
+                        >Сохранить</Button>        
                 </Form>
 
 
