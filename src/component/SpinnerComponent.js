@@ -6,7 +6,8 @@ function SpinnerComponent() {
         <div       
         style={{
           margin: 'auto', 
-          paddingTop: '15%'}}
+          padding: '15%'
+        }}
           >
         <Spinner 
           animation="border" 

@@ -21,8 +21,8 @@ function PartnerItem({partner}) {
     <Card style={{ width: '22rem'}}>
       <Images img={partner.partner_logo}/>
       <Card.Body>
-        <Card.Title>Partner_name: {partner.partner_name['ru-RU']}</Card.Title>
-        <Card.Text><strong>Discount:</strong> {partner.discount}</Card.Text>
+        <Card.Title>Имя партнера: {partner.partner_name['ru-RU']}</Card.Title>
+        <Card.Text><strong>Скидка:</strong> {partner.discount}</Card.Text>
         <Card.Text><strong>Status:</strong>  {partner.status ? 'Активный' : 'Неактивный'}</Card.Text>
         <Card.Text><strong>Create_date:</strong> {partner.create_date}</Card.Text>
         <Card.Text><strong>End_date:</strong> {partner.end_date}</Card.Text>

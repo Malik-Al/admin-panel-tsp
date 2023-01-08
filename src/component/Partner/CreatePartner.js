@@ -119,7 +119,7 @@ function CreatePartner() {
               }
         }
 
-        axios.post('http://localhost:8029/api/partner', formData, headers)
+        axios.post(config.host.partner, formData, headers)
         .then(res => {
             const response = res.data.data
             console.log('response',response)
@@ -231,6 +231,7 @@ function CreatePartner() {
                                         <option 
                                             value={person.category_id}
                                             key={person.category_id}
+                                            required
                                         >
                                             {person.category_name['ru-RU']}
                                         </option>
@@ -253,6 +254,7 @@ function CreatePartner() {
                                         <option 
                                             value={person.city_id}
                                             key={person.city_id}
+                                            required
                                         >
                                             {person.city_name['ru-RU']}
                                         </option>

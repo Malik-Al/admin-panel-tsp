@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavbarComponent from '../component/NavbarComponent';
 
-
 function RightNavigation({children}) {
   return (
     <>
@@ -23,7 +22,7 @@ function RightNavigation({children}) {
               </Navbar>
           </div>
       <div style={{width: '100%'}}>
-        {children}
+        { children }
       </div> 
 
      </div>

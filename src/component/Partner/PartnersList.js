@@ -2,7 +2,7 @@ import React from 'react';
 import RightNavigation from '../../page/RightNavigation';
 import PartnerItem from './PartnersItem';
 import {useState, useEffect} from 'react';
-import Button from 'react-bootstrap/Button';
+import Button from '@mui/material/Button';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import SpinnerComponent from '../SpinnerComponent';
@@ -26,8 +26,9 @@ function Partners (){
       return (<>
             <RightNavigation>
                 <Button 
-                    style={{margin:'5px', fontSize: '20px'}} 
-                    variant="success"
+                    style={{margin:'5px', fontSize: '15px'}} 
+                    variant="contained"
+                    color="success"
                     onClick={() => navigate('/partner/create')}
                 >
                     Добавить партнера 
