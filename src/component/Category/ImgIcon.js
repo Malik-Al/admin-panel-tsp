@@ -4,9 +4,7 @@ import Card from 'react-bootstrap/Card';
 function ImgIcon({img, nameIcon}) {
   return (
     <>
-    <div 
-    // style={{display: 'flex'}}
-    >
+    <div >
     <Card.Img 
         variant="top" 
         src={img} 

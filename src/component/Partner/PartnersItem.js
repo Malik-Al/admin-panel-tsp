@@ -18,7 +18,7 @@ function PartnerItem({partner}) {
 
 
   return ( <>
-    <Card style={{ width: '22rem'}}>
+    <Card style={{ width: '18rem'}}>
       <Images img={partner.partner_logo}/>
       <Card.Body>
         <Card.Title>Имя партнера: {partner.partner_name['ru-RU']}</Card.Title>

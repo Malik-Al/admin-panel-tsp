@@ -37,6 +37,7 @@ function Partners (){
                 <div style={{ 
                     display: 'flex', 
                     flexWrap: 'wrap',
+                    // justifyContent: 'space-evenly'
                     }}>
                     { 
                         data.length 

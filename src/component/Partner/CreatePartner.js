@@ -9,8 +9,10 @@ import moment from 'moment/moment';
 import DatePicker from './Datepicker'
 import TimePickers from './TimePickers';
 import config from '../../config.json'
+import {useNavigate} from 'react-router-dom'
 
 function CreatePartner() {
+    let navigate = useNavigate()
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
     const [dateTime, setDateTime] = useState(null)
@@ -99,20 +101,6 @@ function CreatePartner() {
         formData.append('create_date', moment(startDate).format('YYYY-MM-DD'))
         formData.append('end_date', `${moment(endDate).format('YYYY-MM-DD')} ${dateTime}`)
 
-
-        // console.log('category_id: ', formData.get('category_id'));
-        // console.log('cityId: ', formData.get('city_id'));
-        // console.log('partner_name: ', formData.get('partner_name'));
-        // console.log('discount: ', formData.get('discount'));
-        // console.log('partner_logo: ', formData.get('partner_logo'));
-        // console.log('partner_backdrop: ', formData.get('partner_backdrop'));
-        // console.log('partner_short_description: ', formData.get('partner_short_description'));
-        // console.log('partner_condition: ', formData.get('partner_condition'));
-        // console.log('partner_description: ', formData.get('partner_description'));
-        // console.log('create_date: ', formData.get('create_date'));
-        // console.log('end_date: ', formData.get('end_date'));
-
-
         const headers ={
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -123,8 +111,11 @@ function CreatePartner() {
         .then(res => {
             const response = res.data.data
             console.log('response',response)
+            navigate('/')
         })
         .catch(error => error)
+
+        return 
 
     }  
 
