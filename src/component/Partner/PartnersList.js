@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import SpinnerComponent from '../SpinnerComponent';
+import config from '../../config.json'
 
 
 function Partners (){
@@ -13,7 +14,7 @@ function Partners (){
     let navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:8029/api/partners')
+        axios.get(config.host.partners)
         .then(res => {
             const response = res.data.data
             setData(response)

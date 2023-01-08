@@ -1,0 +1,8 @@
+{
+    "host": {
+        "partner": "http://localhost:8029/api/partner",
+        "partners": "http://localhost:8029/api/partners",
+        "city": "http://localhost:8029/api/city",
+        "category": "http://localhost:8029/api/category"
+    }
+}

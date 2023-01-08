@@ -8,7 +8,7 @@ import axios from 'axios'
 import moment from 'moment/moment';
 import DatePicker from './Datepicker'
 import TimePickers from './TimePickers';
-
+import config from '../../config.json'
 
 function CreatePartner() {
     const [startDate, setStartDate] = useState(new Date())
@@ -43,16 +43,16 @@ function CreatePartner() {
 
     const [categoryId, setCategoryId] = useState('');
     const [cityId, setCityId] = useState('');
-
+    
     useEffect(() => {
-        axios.get('http://localhost:8029/api/category')
+        axios.get(config.host.category)
         .then(res => {
             const response = res.data.data
             setCategory(response)
         })
         .catch(error => error)
 
-        axios.get('http://localhost:8029/api/city')
+        axios.get(config.host.city)
         .then(res => {
             const response = res.data.data
             setCity(response)
