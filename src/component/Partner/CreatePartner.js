@@ -61,7 +61,6 @@ function CreatePartner() {
      
       }, []);
 
-    
     const createPartnersubmin = (e) => {
         const namePartner = {
             'ru-RU': nameRU,
@@ -218,19 +217,20 @@ function CreatePartner() {
                 }}>
                 <Form >
                         <Form.Label style={{fontWeight: 'bold'}}
-                        > Категория </Form.Label>
+                        > Категорий </Form.Label>
                         <FloatingLabel controlId="floatingSelect">
                             <Form.Select 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={categoryHandleChange}
+                                required
                                 >
-                                    <option>Выберите категорию</option>
+                                    <option></option>
+
                                 { 
                                     category.map(person => 
                                         <option 
                                             value={person.category_id}
                                             key={person.category_id}
-                                            required
                                         >
                                             {person.category_name['ru-RU']}
                                         </option>
@@ -240,19 +240,19 @@ function CreatePartner() {
                         </FloatingLabel>
 
 
-                        <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}> Город </Form.Label>
+                        <Form.Label style={{fontWeight: 'bold', paddingTop: '2%'}}> Города </Form.Label>
                         <FloatingLabel controlId="floatingSelect" >
                             <Form.Select 
                                 style={{padding: '1%', height: 'calc(2.5rem + 1px)' }}
                                 onChange={cityHandleChange}
+                                required
                                 >
-                                       <option>Выберите город</option>
+                                       <option></option>
                                 { 
                                     city.map(person => 
                                         <option 
                                             value={person.city_id}
                                             key={person.city_id}
-                                            required
                                         >
                                             {person.city_name['ru-RU']}
                                         </option>

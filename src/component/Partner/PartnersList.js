@@ -24,7 +24,6 @@ function Partners (){
 
       return (<>
             <RightNavigation>
-                {/* <h1 style={{padding:'2%'}}>Партнеры</h1> */}
                 <Button 
                     style={{margin:'5px', fontSize: '20px'}} 
                     variant="success"
@@ -36,7 +35,6 @@ function Partners (){
                 <div style={{ 
                     display: 'flex', 
                     flexWrap: 'wrap',
-                    // justifyContent: 'space-evenly'
                     }}>
                     { 
                         data.length 
